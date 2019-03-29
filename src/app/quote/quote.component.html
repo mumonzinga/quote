@@ -1,0 +1,15 @@
+<h1>my quote</h1>
+
+<div class="container">
+  <div class="row">
+    <app-quote-form (addQuote)="addNewquote($event)"></app-quote-form>
+  </div>
+</div>
+<div class="container">
+  <div *ngFor='let quote of quote; let i = index '>
+    <li> {{quote.name}} due on {{quote.completeDate|date}} </li>
+    <button (click)='toogleDetails(i)'>Toogle Details</button>
+    <app-quote-details *ngIf="quote.showDescription" [quote]='quote' (isComplete)='deleletequote($event,i)'>
+    </app-quote-details>
+  </div>
+</div>
